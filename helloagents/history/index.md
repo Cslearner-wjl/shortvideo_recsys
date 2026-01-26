@@ -12,7 +12,7 @@
 | 202601221528 | jmeter-stress-enhancement | 测试 | ✅已完成 | [2026-01/202601221528_jmeter-stress-enhancement/](2026-01/202601221528_jmeter-stress-enhancement/) |
 | 202601221426 | backend-test-coverage | 测试 | ✅已完成 | [2026-01/202601221426_backend-test-coverage/](2026-01/202601221426_backend-test-coverage/) |
 | 202601221151 | full_test_report | 测试 | ✅已完成 | [2026-01/202601221151_full_test_report/](2026-01/202601221151_full_test_report/) |
-| 202601221117 | system_design_doc | 文档 | ❓待确认 | [2026-01/202601221117_system_design_doc/](2026-01/202601221117_system_design_doc/) |
+| 202601221117 | system_design_doc | 文档 | ✅已完成 | [2026-01/202601221117_system_design_doc/](2026-01/202601221117_system_design_doc/) |
 | 202601212041 | flume_hdfs | 功能 | ✅已完成 | [2026-01/202601212041_flume_hdfs/](2026-01/202601212041_flume_hdfs/) |
 | 202601211137 | 脚本注释与文档迁移整理 | 重构 | ✅已完成 | history/2026-01/202601211137_cleanup_scripts_docs/ |
 | 202601210936 | batch_video_import | 功能 | ✅已完成 | [2026-01/202601210936_batch_video_import/](2026-01/202601210936_batch_video_import/) |
