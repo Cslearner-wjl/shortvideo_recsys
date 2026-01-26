@@ -75,6 +75,11 @@ jmeter.log
 # --- Test Artifacts ---
 docs/tests/jmeter/**/*.jtl
 docs/tests/jmeter/**/*.csv
+docs/tests/jmeter/report*/
+docs/tests/jmeter/report_*/
+docs/tests/jmeter/report_stage*/
+docs/tests/frontend-admin/e2e-playwright/
+docs/tests/frontend-user/e2e-playwright/
 
 # --- Local Scratch ---
 backend/wsl_testfile.txt
@@ -85,3 +90,6 @@ backend/wsl_testfile.txt
 *.mov
 *.avi
 *.mkv
+
+# --- Runtime Data ---
+deploy/data/
