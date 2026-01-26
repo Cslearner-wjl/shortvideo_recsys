@@ -141,7 +141,7 @@
 
 - 单元测试: `mvn -Dtest=HotScoreCalculatorTest,HealthControllerTest,VideoTagsParserTest test`
 - 集成测试: `RUN_MINIO_IT=true mvn -Dtest=*IntegrationTest,BackendApplicationTests test`
-- 测试报告: `docs/test/backend/surefire-test-summary.md`、`docs/test/backend/permissions-validation-report.md`、`docs/test/backend/recommendation-rank-report.md`、`docs/test/backend/video-interaction-report.md`
+- 测试报告: `docs/tests/backend/surefire-test-summary.md`、`docs/tests/backend/permissions-validation-report.md`、`docs/tests/backend/recommendation-rank-report.md`、`docs/tests/backend/video-interaction-report.md`
 - 压测: `tests/jmeter/backend_api.jmx`（报告输出 `docs/tests/jmeter/`）
 
 ---

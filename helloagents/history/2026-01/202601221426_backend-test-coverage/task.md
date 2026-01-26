@@ -18,9 +18,9 @@
 - [√] 4.1 执行安全检查（输入校验、权限控制、敏感信息处理、EHRB风险规避）
 
 ## 5. 文档更新
-- [√] 5.1 在 `docs/test/backend/permissions-validation-report.md` 记录权限与参数校验测试报告
-- [√] 5.2 在 `docs/test/backend/recommendation-rank-report.md` 记录推荐/热榜边界测试报告
-- [√] 5.3 在 `docs/test/backend/video-interaction-report.md` 记录互动异常与幂等测试报告
+- [√] 5.1 在 `docs/tests/backend/permissions-validation-report.md` 记录权限与参数校验测试报告
+- [√] 5.2 在 `docs/tests/backend/recommendation-rank-report.md` 记录推荐/热榜边界测试报告
+- [√] 5.3 在 `docs/tests/backend/video-interaction-report.md` 记录互动异常与幂等测试报告
 
 ## 6. 测试
 - [√] 6.1 执行后端测试：`mvn test`（backend 目录）

@@ -11,7 +11,7 @@
 
 ## 影响范围
 - **模块:** auth、admin、recommendation、rank、video、docs
-- **文件:** `backend/src/test/java/...`、`docs/test/backend/*.md`
+- **文件:** `backend/src/test/java/...`、`docs/tests/backend/*.md`
 - **API:** `/api/auth/**`、`/api/users/**`、`/api/recommendations`、`/api/rank/hot`、`/api/videos/**`、`/api/admin/**`
 - **数据:** H2 测试库数据写入（测试结束自动销毁）
 
