@@ -18,6 +18,10 @@
 
 通过 `deploy/docker-compose.yml` 拉起 MySQL/Redis/MinIO/Kafka（含 Zookeeper）与 HDFS，供后续模块开发与测试复用。
 
+端口约定（默认）：
+- MySQL 宿主机端口默认使用 `3307`（映射到容器 `3306`），避免与本机已有 MySQL(`3306`) 冲突
+- 其余端口以 `deploy/.env` 为准（示例见 `deploy/.env.example`）
+
 ### 需求：Flume 行为日志采集（M3.1）
 
 docker compose 启动 Flume，默认使用 `probablyfine/flume`，配置挂载到 `/opt/flume-config/flume.conf`，agent 名称为 `agent`，可通过 `FLUME_IMAGE` 覆盖。

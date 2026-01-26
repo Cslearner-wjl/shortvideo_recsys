@@ -16,6 +16,7 @@
 
 - `docs/` 作为输入材料来源；当与代码不一致时，以代码与运行时行为为准，并同步更新 `helloagents/` 知识库。
 - 测试报告统一落地 `docs/tests/`，按模块与测试类型分层存档。
+- 文档中禁止硬编码第三方 API Key/Token；统一使用环境变量或 `.env` 注入（仓库仅提交 `.env.example`）。
 - 近期汇总文档: `docs/test/backend/surefire-test-summary.md`（如需统一到 `docs/tests/` 请迁移）。
 - 近期专项报告: `docs/test/backend/permissions-validation-report.md`、`docs/test/backend/recommendation-rank-report.md`、`docs/test/backend/video-interaction-report.md`
 - JMeter 压测增强报告: `docs/tests/jmeter/stage1-mix-report.md`、`docs/tests/jmeter/stage2-peak-report.md`、`docs/tests/jmeter/stage3-soak-report.md`、`docs/tests/jmeter/stress-enhanced-report.md`
