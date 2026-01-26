@@ -1,0 +1,4 @@
+max_ok_threads=0
+max_ok_rps=0
+stop_reason=error_rate
+results_csv=/home/wjl/workspace/shortvideo_recsys/docs/tests/jmeter/peak_results_20260122164006.csv

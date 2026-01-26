@@ -1,0 +1,87 @@
+# --- Java / Spring Boot / Maven ---
+/backend/target/
+/backend/.mvn/
+/backend/mvnw
+/backend/mvnw.cmd
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.idea/
+.settings/
+.project
+.classpath
+*.swp
+*.bak
+
+# --- Node.js / Vue / Vite ---
+**/node_modules/
+/frontend/admin/node_modules/
+/frontend/user/node_modules/
+/frontend/admin/dist/
+/frontend/user/dist/
+/frontend/admin/.vite/
+/frontend/user/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# --- Big Data ---
+/bigdata/target/
+/bigdata/.ipynb_checkpoints/
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Docker / Deploy ---
+/deploy/*.log
+docker-compose.override.yml
+
+# --- IDE ---
+.vscode/
+.idea/
+*.iml
+.eclipse/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Logs ---
+*.log
+logs/
+*.log.*
+nohup.out
+backend/nohup*.out
+jmeter.log
+
+# --- Environment Variables ---
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# --- Temporary Files ---
+*.tmp
+*.temp
+*~
+
+# --- Test Artifacts ---
+docs/tests/jmeter/**/*.jtl
+docs/tests/jmeter/**/*.csv
+
+# --- Local Scratch ---
+backend/wsl_testfile.txt
+
+# --- Generated Media / Data ---
+生成视频/
+*.mp4
+*.mov
+*.avi
+*.mkv

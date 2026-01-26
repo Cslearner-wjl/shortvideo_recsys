@@ -1,0 +1,143 @@
+name: ${COMPOSE_PROJECT_NAME}
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ${COMPOSE_PROJECT_NAME}-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Shanghai
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7
+    container_name: ${COMPOSE_PROJECT_NAME}-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  minio:
+    image: minio/minio:latest
+    container_name: ${COMPOSE_PROJECT_NAME}-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+    ports:
+      - "${MINIO_API_PORT}:9000"
+      - "${MINIO_CONSOLE_PORT}:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  zookeeper:
+    image: ${ZOOKEEPER_IMAGE:-confluentinc/cp-zookeeper:7.6.0}
+    container_name: ${COMPOSE_PROJECT_NAME}-zookeeper
+    restart: unless-stopped
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "${ZOOKEEPER_PORT}:2181"
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+
+  kafka:
+    image: ${KAFKA_IMAGE:-confluentinc/cp-kafka:7.6.0}
+    container_name: ${COMPOSE_PROJECT_NAME}-kafka
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:${KAFKA_EXTERNAL_PORT}
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    ports:
+      - "${KAFKA_EXTERNAL_PORT}:9093"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+
+  namenode:
+    image: ${HDFS_NAMENODE_IMAGE:-bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8}
+    container_name: ${COMPOSE_PROJECT_NAME}-namenode
+    restart: unless-stopped
+    environment:
+      CLUSTER_NAME: ${HDFS_CLUSTER_NAME:-shortvideo}
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
+      HDFS_CONF_dfs_replication: 1
+      HDFS_CONF_dfs_permissions_enabled: "false"
+    ports:
+      - "${HDFS_NAMENODE_UI_PORT}:9870"
+      - "${HDFS_NAMENODE_RPC_PORT}:8020"
+    volumes:
+      - hdfs_namenode:/hadoop/dfs/name
+
+  datanode:
+    image: ${HDFS_DATANODE_IMAGE:-bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8}
+    container_name: ${COMPOSE_PROJECT_NAME}-datanode
+    restart: unless-stopped
+    depends_on:
+      - namenode
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
+      HDFS_CONF_dfs_replication: 1
+      HDFS_CONF_dfs_permissions_enabled: "false"
+    ports:
+      - "${HDFS_DATANODE_UI_PORT}:9864"
+    volumes:
+      - hdfs_datanode:/hadoop/dfs/data
+
+  flume:
+    image: ${FLUME_IMAGE:-probablyfine/flume:latest}
+    container_name: ${COMPOSE_PROJECT_NAME}-flume
+    restart: unless-stopped
+    depends_on:
+      - kafka
+      - namenode
+    environment:
+      FLUME_AGENT_NAME: agent
+      FLUME_CLASSPATH: /opt/flume-classpath/*
+    volumes:
+      - ./flume:/opt/flume-config:ro
+      - ./data/behavior:/data/behavior
+      - ./data/flume:/data/flume
+      - ../bigdata/streaming/.spark/spark-3.5.1-bin-hadoop3/jars:/opt/flume-classpath:ro
+
+volumes:
+  mysql_data:
+  redis_data:
+  minio_data:
+  zookeeper_data:
+  kafka_data:
+  hdfs_namenode:
+  hdfs_datanode:

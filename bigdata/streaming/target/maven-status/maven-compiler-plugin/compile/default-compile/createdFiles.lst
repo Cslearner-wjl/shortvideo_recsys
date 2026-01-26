@@ -1,0 +1,4 @@
+com/shortvideo/recsys/streaming/BehaviorEventSchemas.class
+com/shortvideo/recsys/streaming/BehaviorStreamingJob.class
+com/shortvideo/recsys/streaming/RedisSinkConfig.class
+com/shortvideo/recsys/streaming/RedisSink.class

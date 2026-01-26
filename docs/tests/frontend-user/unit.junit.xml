@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="2" failures="0" errors="0" time="1.052">
+    <testsuite name="tests/unit/token.spec.ts" timestamp="2026-01-22T05:08:28.733Z" hostname="WJL-TB" tests="2" failures="0" errors="0" skipped="0" time="0.002">
+        <testcase classname="tests/unit/token.spec.ts" name="token service &gt; 保存 token 后可读取" time="0.001">
+        </testcase>
+        <testcase classname="tests/unit/token.spec.ts" name="token service &gt; 清理 token 后为空" time="0">
+        </testcase>
+    </testsuite>
+</testsuites>

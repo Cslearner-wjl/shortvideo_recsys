@@ -1,0 +1,134 @@
+.admin-shell {
+  min-height: 100vh;
+  background: var(--app-bg);
+}
+
+.admin-sidebar {
+  background: #ffffff;
+  color: var(--app-text);
+  border-right: 1px solid var(--app-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.admin-shell > .el-container {
+  margin-left: 220px;
+}
+
+.admin-main {
+  margin-left: 220px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-logo {
+  padding: 20px 16px;
+  font-weight: 700;
+  color: var(--app-text);
+  letter-spacing: 0.5px;
+}
+
+.admin-menu {
+  background: transparent;
+  border-right: none;
+}
+
+.admin-menu .el-menu-item {
+  color: var(--app-muted);
+  font-weight: 500;
+}
+
+.admin-menu .el-menu-item.is-active {
+  color: var(--app-text);
+  background: rgba(31, 111, 235, 0.08);
+}
+
+.admin-menu .el-menu-item:hover {
+  background: rgba(31, 111, 235, 0.05);
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: var(--app-surface);
+  border-bottom: 1px solid var(--app-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.admin-header .title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.admin-content {
+  padding: 20px;
+  overflow-y: auto;
+  min-height: calc(100vh - 64px);
+}
+
+.admin-card {
+  background: var(--app-surface);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--app-shadow);
+  border: 1px solid var(--app-border);
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.el-table {
+  --el-table-border-color: var(--app-border);
+  --el-table-header-bg-color: #f3f4f6;
+  --el-table-header-text-color: var(--app-muted);
+  --el-table-text-color: var(--app-text);
+  --el-table-row-hover-bg-color: rgba(31, 111, 235, 0.04);
+}
+
+.el-table th.el-table__cell {
+  background-color: #f3f4f6;
+}
+
+.el-card {
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow);
+}
+
+.el-input__wrapper,
+.el-select__wrapper,
+.el-input-number {
+  background: #ffffff;
+  box-shadow: none;
+  border: 1px solid var(--app-border);
+}
+
+.el-button {
+  border-radius: 999px;
+}

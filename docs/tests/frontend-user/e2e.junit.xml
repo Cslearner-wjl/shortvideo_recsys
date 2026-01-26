@@ -1,0 +1,8 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="0.9860490000000001">
+<testsuite name="auth.spec.ts" timestamp="2026-01-22T05:11:21.710Z" hostname="" tests="2" failures="0" skipped="0" time="0.373" errors="0">
+<testcase name="用户端路由鉴权 › 未登录访问推荐页会跳转登录页" classname="auth.spec.ts" time="0.209">
+</testcase>
+<testcase name="用户端路由鉴权 › 登录态可访问推荐页" classname="auth.spec.ts" time="0.164">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,53 @@
+server:
+  port: 0
+
+app:
+  jwt:
+    secret: test-secret
+    issuer: shortvideo-recsys-test
+    ttl-seconds: 3600
+  hot-rank:
+    enabled: true
+    cache: memory
+    redis-key: hot:videos
+    refresh-interval-ms: 300000
+    topn: 1000
+    weights:
+      play: 1.0
+      like: 3.0
+      comment: 5.0
+      favorite: 4.0
+  recommendations:
+    enabled: true
+    candidate-pool-size: 2000
+    recent-actions-limit: 200
+    top-tags: 5
+    tag-ratio: 0.7
+    hot-ratio: 0.2
+    random-ratio: 0.1
+    random-seed: 2026
+    action-weights:
+      favorite: 4
+      comment: 3
+      like: 2
+      play: 1
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+  flyway:
+    enabled: false
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema-h2.sql
+  task:
+    scheduling:
+      enabled: false
