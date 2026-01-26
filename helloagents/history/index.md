@@ -14,7 +14,7 @@
 | 202601221151 | full_test_report | 测试 | ✅已完成 | [2026-01/202601221151_full_test_report/](2026-01/202601221151_full_test_report/) |
 | 202601221117 | system_design_doc | 文档 | ✅已完成 | [2026-01/202601221117_system_design_doc/](2026-01/202601221117_system_design_doc/) |
 | 202601212041 | flume_hdfs | 功能 | ✅已完成 | [2026-01/202601212041_flume_hdfs/](2026-01/202601212041_flume_hdfs/) |
-| 202601211137 | 脚本注释与文档迁移整理 | 重构 | ✅已完成 | [2026-01/202601211137_cleanup_scripts_docs/](2026-01/202601211137_cleanup_scripts_docs/) |
+| 202601211137 | cleanup_scripts_docs | 重构 | ✅已完成 | [2026-01/202601211137_cleanup_scripts_docs/](2026-01/202601211137_cleanup_scripts_docs/) |
 | 202601210936 | batch_video_import | 功能 | ✅已完成 | [2026-01/202601210936_batch_video_import/](2026-01/202601210936_batch_video_import/) |
 | 202601202105 | interaction_persistence_fix | 修复 | ✅已完成 | [2026-01/202601202105_interaction_persistence_fix/](2026-01/202601202105_interaction_persistence_fix/) |
 | 202601202045 | comment_interaction_fix | 修复 | ✅已完成 | [2026-01/202601202045_comment_interaction_fix/](2026-01/202601202045_comment_interaction_fix/) |
